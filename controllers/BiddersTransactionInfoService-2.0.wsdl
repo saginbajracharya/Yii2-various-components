@@ -1,0 +1,1874 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" xmlns:intf="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="urn:BiddersTransactionInfoService" xmlns:tns2="http://proc.dena.jp" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDLはApache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)によって生成されました / [en]-(WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT))-->
+ <wsdl:types>
+  <schema targetNamespace="urn:BiddersTransactionInfoService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService"/>
+   <import namespace="http://proc.dena.jp"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="AuthInfo">
+    <sequence>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="userId" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="SearchCondition">
+    <sequence>
+     <element name="auPaymentStatus" nillable="true" type="xsd:string"/>
+     <element name="creditFlg" nillable="true" type="xsd:string"/>
+     <element name="dcPaymentStatus" nillable="true" type="xsd:string"/>
+     <element name="dealType" nillable="true" type="xsd:string"/>
+     <element name="endDate" nillable="true" type="xsd:dateTime"/>
+     <element name="loadFlg" nillable="true" type="xsd:string"/>
+     <element name="mailFlg" nillable="true" type="xsd:string"/>
+     <element name="receiptFlg" nillable="true" type="xsd:string"/>
+     <element name="shipFlg" nillable="true" type="xsd:string"/>
+     <element name="startDate" nillable="true" type="xsd:dateTime"/>
+     <element name="upperRecNum" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="GetOrderIdInfoReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="searchCondition" nillable="true" type="tns1:SearchCondition"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="TransactionStatus">
+    <sequence>
+     <element name="creditDate" nillable="true" type="xsd:dateTime"/>
+     <element name="creditFlg" nillable="true" type="xsd:string"/>
+     <element name="loadDate" nillable="true" type="xsd:dateTime"/>
+     <element name="loadFlg" nillable="true" type="xsd:string"/>
+     <element name="mailDate" nillable="true" type="xsd:dateTime"/>
+     <element name="mailFlg" nillable="true" type="xsd:string"/>
+     <element name="receiptDate" nillable="true" type="xsd:dateTime"/>
+     <element name="receiptFlg" nillable="true" type="xsd:string"/>
+     <element name="shipDate" nillable="true" type="xsd:dateTime"/>
+     <element name="shipFlg" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="OrderIdInfo">
+    <sequence>
+     <element name="orderId" nillable="true" type="xsd:long"/>
+     <element name="status" nillable="true" type="tns1:TransactionStatus"/>
+    </sequence>
+   </complexType>
+   <complexType name="GetOrderIdInfoResult">
+    <complexContent>
+     <extension base="tns2:Procedure_Response">
+      <sequence>
+       <element name="moreFlg" nillable="true" type="xsd:boolean"/>
+       <element name="orderIdInfoArray" nillable="true" type="impl:ArrayOf_tns1_OrderIdInfo"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="TransactionDetail">
+    <sequence>
+     <element name="admId" nillable="true" type="xsd:string"/>
+     <element name="auctionType" nillable="true" type="xsd:string"/>
+     <element name="exhibiterDealType" nillable="true" type="xsd:string"/>
+     <element name="giftPoint" nillable="true" type="xsd:long"/>
+     <element name="itemCode" nillable="true" type="xsd:string"/>
+     <element name="itemOption" nillable="true" type="xsd:string"/>
+     <element name="itemTitle" nillable="true" type="xsd:string"/>
+     <element name="misdealStatus" nillable="true" type="xsd:string"/>
+     <element name="naviItemNum" nillable="true" type="xsd:int"/>
+     <element name="naviPrice" nillable="true" type="xsd:long"/>
+     <element name="seqExhibitId" nillable="true" type="xsd:long"/>
+     <element name="seqSucId" nillable="true" type="xsd:long"/>
+     <element name="taxType" nillable="true" type="xsd:string"/>
+     <element name="tranDate" nillable="true" type="xsd:dateTime"/>
+     <element name="tranItemNum" nillable="true" type="xsd:int"/>
+     <element name="tranPrice" nillable="true" type="xsd:long"/>
+     <element name="tranSt" nillable="true" type="xsd:string"/>
+     <element name="tranTotal" nillable="true" type="xsd:long"/>
+     <element name="userCapitalPoint" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="TransactionInfo">
+    <sequence>
+     <element name="amountPrice" nillable="true" type="xsd:long"/>
+     <element name="auPayAmount" nillable="true" type="xsd:long"/>
+     <element name="auPayOdrId" nillable="true" type="xsd:long"/>
+     <element name="auPayReasonCode" nillable="true" type="xsd:string"/>
+     <element name="auPayResultCode" nillable="true" type="xsd:string"/>
+     <element name="auPayStatus" nillable="true" type="xsd:string"/>
+     <element name="cardMonthLimit" nillable="true" type="xsd:string"/>
+     <element name="cardNo" nillable="true" type="xsd:string"/>
+     <element name="cardOption" nillable="true" type="xsd:string"/>
+     <element name="cardType" nillable="true" type="xsd:string"/>
+     <element name="cardYearLimit" nillable="true" type="xsd:string"/>
+     <element name="cardholderBirthday" nillable="true" type="xsd:dateTime"/>
+     <element name="cardholderName" nillable="true" type="xsd:string"/>
+     <element name="chargePrice" nillable="true" type="xsd:long"/>
+     <element name="details" nillable="true" type="impl:ArrayOf_tns1_TransactionDetail"/>
+     <element name="naviComment" nillable="true" type="xsd:string"/>
+     <element name="naviDealType" nillable="true" type="xsd:string"/>
+     <element name="naviOption" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptAddress" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptKana" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptName" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptTel" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptTelDaytime" nillable="true" type="xsd:string"/>
+     <element name="naviSucAddress" nillable="true" type="xsd:string"/>
+     <element name="naviSucEmail" nillable="true" type="xsd:string"/>
+     <element name="naviSucKana" nillable="true" type="xsd:string"/>
+     <element name="naviSucName" nillable="true" type="xsd:string"/>
+     <element name="naviSucTel" nillable="true" type="xsd:string"/>
+     <element name="naviSucTelDaytime" nillable="true" type="xsd:string"/>
+     <element name="orderId" nillable="true" type="xsd:long"/>
+     <element name="shipPrice" nillable="true" type="xsd:long"/>
+     <element name="status" nillable="true" type="tns1:TransactionStatus"/>
+     <element name="sucCarrierType" nillable="true" type="xsd:string"/>
+     <element name="sucDate" nillable="true" type="xsd:dateTime"/>
+     <element name="sucEmail" nillable="true" type="xsd:string"/>
+     <element name="sucHomeSite" nillable="true" type="xsd:string"/>
+     <element name="sucHomeSiteName" nillable="true" type="xsd:string"/>
+     <element name="sucNickname" nillable="true" type="xsd:string"/>
+     <element name="tax" nillable="true" type="xsd:long"/>
+     <element name="totalPrice" nillable="true" type="xsd:long"/>
+     <element name="totalSaleItemNum" nillable="true" type="xsd:int"/>
+     <element name="totalSalePrice" nillable="true" type="xsd:long"/>
+     <element name="tranComment" nillable="true" type="xsd:string"/>
+     <element name="tranDealType" nillable="true" type="xsd:string"/>
+     <element name="tranSucAddress" nillable="true" type="xsd:string"/>
+     <element name="tranSucName" nillable="true" type="xsd:string"/>
+     <element name="tranSucTel" nillable="true" type="xsd:string"/>
+     <element name="usePoint" nillable="true" type="xsd:long"/>
+     <element name="usePointCancelSt" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UpdateTransactionReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="tranInfoArray" nillable="true" type="impl:ArrayOf_tns1_TransactionInfo"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AuPaymentUpdateResult">
+    <complexContent>
+     <extension base="tns2:Procedure_Response">
+      <sequence>
+       <element name="orderId" nillable="true" type="xsd:long"/>
+       <element name="reasonCode" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ErrorInfo">
+    <complexContent>
+     <extension base="tns2:Procedure_Response">
+      <sequence>
+       <element name="errCode" nillable="true" type="xsd:string"/>
+       <element name="errMessage" nillable="true" type="xsd:string"/>
+       <element name="keyId" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ProcessResult">
+    <complexContent>
+     <extension base="tns2:Procedure_Response">
+      <sequence>
+       <element name="auResult" nillable="true" type="impl:ArrayOf_tns1_AuPaymentUpdateResult"/>
+       <element name="eachErrors" nillable="true" type="impl:ArrayOf_tns1_ErrorInfo"/>
+       <element name="modDate" nillable="true" type="xsd:dateTime"/>
+       <element name="processType" nillable="true" type="xsd:int"/>
+       <element name="startDate" nillable="true" type="xsd:dateTime"/>
+       <element name="transactionId" nillable="true" type="xsd:long"/>
+       <element name="updateCount" nillable="true" type="xsd:int"/>
+       <element name="updateStatus" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ItemSearchKey">
+    <sequence>
+     <element name="itemCode" nillable="true" type="xsd:string"/>
+     <element name="seqExhibitId" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="GetStockReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="itemSearchKeyArray" nillable="true" type="impl:ArrayOf_tns1_ItemSearchKey"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="SkuStockInfo">
+    <sequence>
+     <element name="columnPos" nillable="true" type="xsd:string"/>
+     <element name="rowPos" nillable="true" type="xsd:string"/>
+     <element name="stock" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="StockInfo">
+    <sequence>
+     <element name="isSkuStock" nillable="true" type="xsd:boolean"/>
+     <element name="itemCode" nillable="true" type="xsd:string"/>
+     <element name="seqExhibitId" nillable="true" type="xsd:long"/>
+     <element name="skuStockInfoArray" nillable="true" type="impl:ArrayOf_tns1_SkuStockInfo"/>
+     <element name="stock" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="GetStockResult">
+    <complexContent>
+     <extension base="tns2:Procedure_Response">
+      <sequence>
+       <element name="stockInfoArray" nillable="true" type="impl:ArrayOf_tns1_StockInfo"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="GetTransByConditionReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="flgUpOption" nillable="true" type="xsd:string"/>
+       <element name="searchCondition" nillable="true" type="tns1:SearchCondition"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="GetTransactionInfoResult">
+    <complexContent>
+     <extension base="tns2:Procedure_Response">
+      <sequence>
+       <element name="moreFlg" nillable="true" type="xsd:boolean"/>
+       <element name="transactionInfoArray" nillable="true" type="impl:ArrayOf_tns1_TransactionInfo"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="TransactionInfoDc">
+    <sequence>
+     <element name="amountPrice" nillable="true" type="xsd:long"/>
+     <element name="cardMonthLimit" nillable="true" type="xsd:string"/>
+     <element name="cardNo" nillable="true" type="xsd:string"/>
+     <element name="cardOption" nillable="true" type="xsd:string"/>
+     <element name="cardType" nillable="true" type="xsd:string"/>
+     <element name="cardYearLimit" nillable="true" type="xsd:string"/>
+     <element name="cardholderBirthday" nillable="true" type="xsd:dateTime"/>
+     <element name="cardholderName" nillable="true" type="xsd:string"/>
+     <element name="chargePrice" nillable="true" type="xsd:long"/>
+     <element name="details" nillable="true" type="impl:ArrayOf_tns1_TransactionDetail"/>
+     <element name="naviComment" nillable="true" type="xsd:string"/>
+     <element name="naviDealType" nillable="true" type="xsd:string"/>
+     <element name="naviOption" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptAddress" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptKana" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptName" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptTel" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptTelDaytime" nillable="true" type="xsd:string"/>
+     <element name="naviSucAddress" nillable="true" type="xsd:string"/>
+     <element name="naviSucEmail" nillable="true" type="xsd:string"/>
+     <element name="naviSucKana" nillable="true" type="xsd:string"/>
+     <element name="naviSucName" nillable="true" type="xsd:string"/>
+     <element name="naviSucTel" nillable="true" type="xsd:string"/>
+     <element name="naviSucTelDaytime" nillable="true" type="xsd:string"/>
+     <element name="orderId" nillable="true" type="xsd:long"/>
+     <element name="payAmount" nillable="true" type="xsd:long"/>
+     <element name="payOdrId" nillable="true" type="xsd:string"/>
+     <element name="payReasonCode" nillable="true" type="xsd:string"/>
+     <element name="payResultCode" nillable="true" type="xsd:string"/>
+     <element name="payStatus" nillable="true" type="xsd:string"/>
+     <element name="shipPrice" nillable="true" type="xsd:long"/>
+     <element name="status" nillable="true" type="tns1:TransactionStatus"/>
+     <element name="sucCarrierType" nillable="true" type="xsd:string"/>
+     <element name="sucDate" nillable="true" type="xsd:dateTime"/>
+     <element name="sucEmail" nillable="true" type="xsd:string"/>
+     <element name="sucHomeSite" nillable="true" type="xsd:string"/>
+     <element name="sucHomeSiteName" nillable="true" type="xsd:string"/>
+     <element name="sucNickname" nillable="true" type="xsd:string"/>
+     <element name="tax" nillable="true" type="xsd:long"/>
+     <element name="totalPrice" nillable="true" type="xsd:long"/>
+     <element name="totalSaleItemNum" nillable="true" type="xsd:int"/>
+     <element name="totalSalePrice" nillable="true" type="xsd:long"/>
+     <element name="tranComment" nillable="true" type="xsd:string"/>
+     <element name="tranDealType" nillable="true" type="xsd:string"/>
+     <element name="tranSucAddress" nillable="true" type="xsd:string"/>
+     <element name="tranSucName" nillable="true" type="xsd:string"/>
+     <element name="tranSucTel" nillable="true" type="xsd:string"/>
+     <element name="usePoint" nillable="true" type="xsd:long"/>
+     <element name="usePointCancelSt" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="GetTransactionInfoResultDc">
+    <complexContent>
+     <extension base="tns2:Procedure_Response">
+      <sequence>
+       <element name="moreFlg" nillable="true" type="xsd:boolean"/>
+       <element name="transactionInfoArray" nillable="true" type="impl:ArrayOf_tns1_TransactionInfoDc"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="TransactionInfoAup">
+    <sequence>
+     <element name="amountPrice" nillable="true" type="xsd:long"/>
+     <element name="cardMonthLimit" nillable="true" type="xsd:string"/>
+     <element name="cardNo" nillable="true" type="xsd:string"/>
+     <element name="cardOption" nillable="true" type="xsd:string"/>
+     <element name="cardType" nillable="true" type="xsd:string"/>
+     <element name="cardYearLimit" nillable="true" type="xsd:string"/>
+     <element name="cardholderBirthday" nillable="true" type="xsd:dateTime"/>
+     <element name="cardholderName" nillable="true" type="xsd:string"/>
+     <element name="chargePrice" nillable="true" type="xsd:long"/>
+     <element name="details" nillable="true" type="impl:ArrayOf_tns1_TransactionDetail"/>
+     <element name="naviComment" nillable="true" type="xsd:string"/>
+     <element name="naviDealType" nillable="true" type="xsd:string"/>
+     <element name="naviOption" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptAddress" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptKana" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptName" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptTel" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptTelDaytime" nillable="true" type="xsd:string"/>
+     <element name="naviSucAddress" nillable="true" type="xsd:string"/>
+     <element name="naviSucEmail" nillable="true" type="xsd:string"/>
+     <element name="naviSucKana" nillable="true" type="xsd:string"/>
+     <element name="naviSucName" nillable="true" type="xsd:string"/>
+     <element name="naviSucTel" nillable="true" type="xsd:string"/>
+     <element name="naviSucTelDaytime" nillable="true" type="xsd:string"/>
+     <element name="orderId" nillable="true" type="xsd:long"/>
+     <element name="payAmount" nillable="true" type="xsd:long"/>
+     <element name="payOdrId" nillable="true" type="xsd:string"/>
+     <element name="payReasonCode" nillable="true" type="xsd:string"/>
+     <element name="payResultCode" nillable="true" type="xsd:string"/>
+     <element name="payStatus" nillable="true" type="xsd:string"/>
+     <element name="shipPrice" nillable="true" type="xsd:long"/>
+     <element name="status" nillable="true" type="tns1:TransactionStatus"/>
+     <element name="sucCarrierType" nillable="true" type="xsd:string"/>
+     <element name="sucDate" nillable="true" type="xsd:dateTime"/>
+     <element name="sucEmail" nillable="true" type="xsd:string"/>
+     <element name="sucHomeSite" nillable="true" type="xsd:string"/>
+     <element name="sucHomeSiteName" nillable="true" type="xsd:string"/>
+     <element name="sucNickname" nillable="true" type="xsd:string"/>
+     <element name="tax" nillable="true" type="xsd:long"/>
+     <element name="totalPrice" nillable="true" type="xsd:long"/>
+     <element name="totalSaleItemNum" nillable="true" type="xsd:int"/>
+     <element name="totalSalePrice" nillable="true" type="xsd:long"/>
+     <element name="tranComment" nillable="true" type="xsd:string"/>
+     <element name="tranDealType" nillable="true" type="xsd:string"/>
+     <element name="tranSucAddress" nillable="true" type="xsd:string"/>
+     <element name="tranSucName" nillable="true" type="xsd:string"/>
+     <element name="tranSucTel" nillable="true" type="xsd:string"/>
+     <element name="useAuPoint" nillable="true" type="xsd:long"/>
+     <element name="useAuPointAmount" nillable="true" type="xsd:long"/>
+     <element name="useAuPointCancelSt" nillable="true" type="xsd:string"/>
+     <element name="usePoint" nillable="true" type="xsd:long"/>
+     <element name="usePointCancelSt" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="GetTransactionInfoResultAup">
+    <complexContent>
+     <extension base="tns2:Procedure_Response">
+      <sequence>
+       <element name="moreFlg" nillable="true" type="xsd:boolean"/>
+       <element name="transactionInfoArray" nillable="true" type="impl:ArrayOf_tns1_TransactionInfoAup"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="TransactionInfoMail">
+    <sequence>
+     <element name="amountPrice" nillable="true" type="xsd:long"/>
+     <element name="cardMonthLimit" nillable="true" type="xsd:string"/>
+     <element name="cardNo" nillable="true" type="xsd:string"/>
+     <element name="cardOption" nillable="true" type="xsd:string"/>
+     <element name="cardType" nillable="true" type="xsd:string"/>
+     <element name="cardYearLimit" nillable="true" type="xsd:string"/>
+     <element name="cardholderBirthday" nillable="true" type="xsd:dateTime"/>
+     <element name="cardholderName" nillable="true" type="xsd:string"/>
+     <element name="chargePrice" nillable="true" type="xsd:long"/>
+     <element name="details" nillable="true" type="impl:ArrayOf_tns1_TransactionDetail"/>
+     <element name="naviComment" nillable="true" type="xsd:string"/>
+     <element name="naviDealType" nillable="true" type="xsd:string"/>
+     <element name="naviOption" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptAddress" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptKana" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptName" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptTel" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptTelDaytime" nillable="true" type="xsd:string"/>
+     <element name="naviSucAddress" nillable="true" type="xsd:string"/>
+     <element name="naviSucEmail" nillable="true" type="xsd:string"/>
+     <element name="naviSucKana" nillable="true" type="xsd:string"/>
+     <element name="naviSucName" nillable="true" type="xsd:string"/>
+     <element name="naviSucTel" nillable="true" type="xsd:string"/>
+     <element name="naviSucTelDaytime" nillable="true" type="xsd:string"/>
+     <element name="orderId" nillable="true" type="xsd:long"/>
+     <element name="payAmount" nillable="true" type="xsd:long"/>
+     <element name="payOdrId" nillable="true" type="xsd:string"/>
+     <element name="payReasonCode" nillable="true" type="xsd:string"/>
+     <element name="payResultCode" nillable="true" type="xsd:string"/>
+     <element name="payStatus" nillable="true" type="xsd:string"/>
+     <element name="shipPrice" nillable="true" type="xsd:long"/>
+     <element name="status" nillable="true" type="tns1:TransactionStatus"/>
+     <element name="sucCarrierType" nillable="true" type="xsd:string"/>
+     <element name="sucDate" nillable="true" type="xsd:dateTime"/>
+     <element name="sucEmail" nillable="true" type="xsd:string"/>
+     <element name="sucHomeSite" nillable="true" type="xsd:string"/>
+     <element name="sucHomeSiteName" nillable="true" type="xsd:string"/>
+     <element name="sucNickname" nillable="true" type="xsd:string"/>
+     <element name="tax" nillable="true" type="xsd:long"/>
+     <element name="totalPrice" nillable="true" type="xsd:long"/>
+     <element name="totalSaleItemNum" nillable="true" type="xsd:int"/>
+     <element name="totalSalePrice" nillable="true" type="xsd:long"/>
+     <element name="tranComment" nillable="true" type="xsd:string"/>
+     <element name="tranDealType" nillable="true" type="xsd:string"/>
+     <element name="tranSucAddress" nillable="true" type="xsd:string"/>
+     <element name="tranSucName" nillable="true" type="xsd:string"/>
+     <element name="tranSucTel" nillable="true" type="xsd:string"/>
+     <element name="unencryptedSucEmail" nillable="true" type="xsd:string"/>
+     <element name="useAuPoint" nillable="true" type="xsd:long"/>
+     <element name="useAuPointAmount" nillable="true" type="xsd:long"/>
+     <element name="useAuPointCancelSt" nillable="true" type="xsd:string"/>
+     <element name="usePoint" nillable="true" type="xsd:long"/>
+     <element name="usePointCancelSt" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="GetTransactionInfoResultMail">
+    <complexContent>
+     <extension base="tns2:Procedure_Response">
+      <sequence>
+       <element name="moreFlg" nillable="true" type="xsd:boolean"/>
+       <element name="transactionInfoArray" nillable="true" type="impl:ArrayOf_tns1_TransactionInfoMail"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="TransactionInfoCoupon">
+    <sequence>
+     <element name="amountPrice" nillable="true" type="xsd:long"/>
+     <element name="cardMonthLimit" nillable="true" type="xsd:string"/>
+     <element name="cardNo" nillable="true" type="xsd:string"/>
+     <element name="cardOption" nillable="true" type="xsd:string"/>
+     <element name="cardType" nillable="true" type="xsd:string"/>
+     <element name="cardYearLimit" nillable="true" type="xsd:string"/>
+     <element name="cardholderBirthday" nillable="true" type="xsd:dateTime"/>
+     <element name="cardholderName" nillable="true" type="xsd:string"/>
+     <element name="chargePrice" nillable="true" type="xsd:long"/>
+     <element name="details" nillable="true" type="impl:ArrayOf_tns1_TransactionDetail"/>
+     <element name="naviComment" nillable="true" type="xsd:string"/>
+     <element name="naviDealType" nillable="true" type="xsd:string"/>
+     <element name="naviOption" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptAddress" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptKana" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptName" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptTel" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptTelDaytime" nillable="true" type="xsd:string"/>
+     <element name="naviSucAddress" nillable="true" type="xsd:string"/>
+     <element name="naviSucEmail" nillable="true" type="xsd:string"/>
+     <element name="naviSucKana" nillable="true" type="xsd:string"/>
+     <element name="naviSucName" nillable="true" type="xsd:string"/>
+     <element name="naviSucTel" nillable="true" type="xsd:string"/>
+     <element name="naviSucTelDaytime" nillable="true" type="xsd:string"/>
+     <element name="orderId" nillable="true" type="xsd:long"/>
+     <element name="payAmount" nillable="true" type="xsd:long"/>
+     <element name="payOdrId" nillable="true" type="xsd:string"/>
+     <element name="payReasonCode" nillable="true" type="xsd:string"/>
+     <element name="payResultCode" nillable="true" type="xsd:string"/>
+     <element name="payStatus" nillable="true" type="xsd:string"/>
+     <element name="shipPrice" nillable="true" type="xsd:long"/>
+     <element name="status" nillable="true" type="tns1:TransactionStatus"/>
+     <element name="sucCarrierType" nillable="true" type="xsd:string"/>
+     <element name="sucDate" nillable="true" type="xsd:dateTime"/>
+     <element name="sucEmail" nillable="true" type="xsd:string"/>
+     <element name="sucHomeSite" nillable="true" type="xsd:string"/>
+     <element name="sucHomeSiteName" nillable="true" type="xsd:string"/>
+     <element name="sucNickname" nillable="true" type="xsd:string"/>
+     <element name="tax" nillable="true" type="xsd:long"/>
+     <element name="totalPrice" nillable="true" type="xsd:long"/>
+     <element name="totalSaleItemNum" nillable="true" type="xsd:int"/>
+     <element name="totalSalePrice" nillable="true" type="xsd:long"/>
+     <element name="tranComment" nillable="true" type="xsd:string"/>
+     <element name="tranDealType" nillable="true" type="xsd:string"/>
+     <element name="tranSucAddress" nillable="true" type="xsd:string"/>
+     <element name="tranSucName" nillable="true" type="xsd:string"/>
+     <element name="tranSucTel" nillable="true" type="xsd:string"/>
+     <element name="unencryptedSucEmail" nillable="true" type="xsd:string"/>
+     <element name="useAuPoint" nillable="true" type="xsd:long"/>
+     <element name="useAuPointAmount" nillable="true" type="xsd:long"/>
+     <element name="useAuPointCancelSt" nillable="true" type="xsd:string"/>
+     <element name="useCouponPrice" nillable="true" type="xsd:long"/>
+     <element name="usePoint" nillable="true" type="xsd:long"/>
+     <element name="usePointCancelSt" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="GetTransactionInfoResultCoupon">
+    <complexContent>
+     <extension base="tns2:Procedure_Response">
+      <sequence>
+       <element name="moreFlg" nillable="true" type="xsd:boolean"/>
+       <element name="transactionInfoArray" nillable="true" type="impl:ArrayOf_tns1_TransactionInfoCoupon"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="TransactionInfoCoupon2">
+    <sequence>
+     <element name="amountPrice" nillable="true" type="xsd:long"/>
+     <element name="cardMonthLimit" nillable="true" type="xsd:string"/>
+     <element name="cardNo" nillable="true" type="xsd:string"/>
+     <element name="cardOption" nillable="true" type="xsd:string"/>
+     <element name="cardType" nillable="true" type="xsd:string"/>
+     <element name="cardYearLimit" nillable="true" type="xsd:string"/>
+     <element name="cardholderBirthday" nillable="true" type="xsd:dateTime"/>
+     <element name="cardholderName" nillable="true" type="xsd:string"/>
+     <element name="chargePrice" nillable="true" type="xsd:long"/>
+     <element name="couponCapitalType" nillable="true" type="xsd:string"/>
+     <element name="couponKey" nillable="true" type="xsd:string"/>
+     <element name="details" nillable="true" type="impl:ArrayOf_tns1_TransactionDetail"/>
+     <element name="naviComment" nillable="true" type="xsd:string"/>
+     <element name="naviDealType" nillable="true" type="xsd:string"/>
+     <element name="naviOption" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptAddress" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptKana" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptName" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptTel" nillable="true" type="xsd:string"/>
+     <element name="naviReceiptTelDaytime" nillable="true" type="xsd:string"/>
+     <element name="naviSucAddress" nillable="true" type="xsd:string"/>
+     <element name="naviSucEmail" nillable="true" type="xsd:string"/>
+     <element name="naviSucKana" nillable="true" type="xsd:string"/>
+     <element name="naviSucName" nillable="true" type="xsd:string"/>
+     <element name="naviSucTel" nillable="true" type="xsd:string"/>
+     <element name="naviSucTelDaytime" nillable="true" type="xsd:string"/>
+     <element name="orderId" nillable="true" type="xsd:long"/>
+     <element name="payAmount" nillable="true" type="xsd:long"/>
+     <element name="payOdrId" nillable="true" type="xsd:string"/>
+     <element name="payReasonCode" nillable="true" type="xsd:string"/>
+     <element name="payResultCode" nillable="true" type="xsd:string"/>
+     <element name="payStatus" nillable="true" type="xsd:string"/>
+     <element name="shipPrice" nillable="true" type="xsd:long"/>
+     <element name="status" nillable="true" type="tns1:TransactionStatus"/>
+     <element name="sucCarrierType" nillable="true" type="xsd:string"/>
+     <element name="sucDate" nillable="true" type="xsd:dateTime"/>
+     <element name="sucEmail" nillable="true" type="xsd:string"/>
+     <element name="sucHomeSite" nillable="true" type="xsd:string"/>
+     <element name="sucHomeSiteName" nillable="true" type="xsd:string"/>
+     <element name="sucNickname" nillable="true" type="xsd:string"/>
+     <element name="tax" nillable="true" type="xsd:long"/>
+     <element name="totalPrice" nillable="true" type="xsd:long"/>
+     <element name="totalSaleItemNum" nillable="true" type="xsd:int"/>
+     <element name="totalSalePrice" nillable="true" type="xsd:long"/>
+     <element name="tranComment" nillable="true" type="xsd:string"/>
+     <element name="tranDealType" nillable="true" type="xsd:string"/>
+     <element name="tranSucAddress" nillable="true" type="xsd:string"/>
+     <element name="tranSucName" nillable="true" type="xsd:string"/>
+     <element name="tranSucTel" nillable="true" type="xsd:string"/>
+     <element name="unencryptedSucEmail" nillable="true" type="xsd:string"/>
+     <element name="useAuPoint" nillable="true" type="xsd:long"/>
+     <element name="useAuPointAmount" nillable="true" type="xsd:long"/>
+     <element name="useAuPointCancelSt" nillable="true" type="xsd:string"/>
+     <element name="useCouponPrice" nillable="true" type="xsd:long"/>
+     <element name="usePoint" nillable="true" type="xsd:long"/>
+     <element name="usePointCancelSt" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="GetTransactionInfoResultCoupon2">
+    <complexContent>
+     <extension base="tns2:Procedure_Response">
+      <sequence>
+       <element name="moreFlg" nillable="true" type="xsd:boolean"/>
+       <element name="transactionInfoArray" nillable="true" type="impl:ArrayOf_tns1_TransactionInfoCoupon2"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="GetTransByIdReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="flgUpOption" nillable="true" type="xsd:string"/>
+       <element name="orderIdArray" nillable="true" type="impl:ArrayOf_xsd_long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="GetUpdateResultReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="transactionId" nillable="true" type="impl:ArrayOf_xsd_long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="UpdateResult">
+    <complexContent>
+     <extension base="tns2:Procedure_Response">
+      <sequence>
+       <element name="processResultArray" nillable="true" type="impl:ArrayOf_tns1_ProcessResult"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CancelInfo">
+    <sequence>
+     <element name="orderId" nillable="true" type="xsd:long"/>
+     <element name="reasonCode" nillable="true" type="xsd:int"/>
+     <element name="seqSucId" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="CancelTransactionReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="cancelInfoArray" nillable="true" type="impl:ArrayOf_tns1_CancelInfo"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="PointStatusInfo">
+    <sequence>
+     <element name="orderId" nillable="true" type="xsd:long"/>
+     <element name="pointStatus" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UpdatePointStatusReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="pointStatusInfo" nillable="true" type="impl:ArrayOf_tns1_PointStatusInfo"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="UpdateTransactionStatusReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="orderIdInfo" nillable="true" type="impl:ArrayOf_tns1_OrderIdInfo"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="UpdateStockInfoBasic">
+    <sequence>
+     <element name="itemCode" nillable="true" type="xsd:string"/>
+     <element name="seqExhibitId" nillable="true" type="xsd:long"/>
+     <element name="stock" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="UpdateStockBasicReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="updateStockInfoBasic" nillable="true" type="tns1:UpdateStockInfoBasic"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="UpdateStockInfoSku">
+    <sequence>
+     <element name="itemCode" nillable="true" type="xsd:string"/>
+     <element name="seqExhibitId" nillable="true" type="xsd:long"/>
+     <element name="skuStockInfo" nillable="true" type="impl:ArrayOf_tns1_SkuStockInfo"/>
+    </sequence>
+   </complexType>
+   <complexType name="UpdateStockSkuReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="updateStockInfoSku" nillable="true" type="tns1:UpdateStockInfoSku"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="UpdateStockInfoBasic2">
+    <sequence>
+     <element name="itemCode" nillable="true" type="xsd:string"/>
+     <element name="seqExhibitId" nillable="true" type="xsd:long"/>
+     <element name="stock" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UpdateStockBasic2Req">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="updateStockInfoBasic2" nillable="true" type="tns1:UpdateStockInfoBasic2"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="SkuStockInfo2">
+    <sequence>
+     <element name="columnPos" nillable="true" type="xsd:string"/>
+     <element name="rowPos" nillable="true" type="xsd:string"/>
+     <element name="stock" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UpdateStockInfoSku2">
+    <sequence>
+     <element name="itemCode" nillable="true" type="xsd:string"/>
+     <element name="seqExhibitId" nillable="true" type="xsd:long"/>
+     <element name="skuStockInfo2" nillable="true" type="impl:ArrayOf_tns1_SkuStockInfo2"/>
+    </sequence>
+   </complexType>
+   <complexType name="UpdateStockSku2Req">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="updateStockInfoSku2" nillable="true" type="tns1:UpdateStockInfoSku2"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AuPaymentInfo">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="auPayAmount" nillable="true" type="xsd:long"/>
+       <element name="orderId" nillable="true" type="xsd:long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AuPaymentFixReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="auPaymentInfo" nillable="true" type="tns1:AuPaymentInfo"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AuPaymentCancelReq">
+    <complexContent>
+     <extension base="tns2:Procedure_Request">
+      <sequence>
+       <element name="orderId" nillable="true" type="xsd:long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://proc.dena.jp" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="urn:BiddersTransactionInfoService"/>
+   <import namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="Procedure_Request">
+    <sequence>
+     <element name="authInfo" nillable="true" type="tns1:AuthInfo"/>
+    </sequence>
+   </complexType>
+   <complexType name="Procedure_Response">
+    <sequence>
+     <element name="resultCode" nillable="true" type="xsd:string"/>
+     <element name="resultMessage" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="urn:BiddersTransactionInfoService"/>
+   <import namespace="http://proc.dena.jp"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns1_OrderIdInfo">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:OrderIdInfo[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_TransactionDetail">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:TransactionDetail[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_TransactionInfo">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:TransactionInfo[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_AuPaymentUpdateResult">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:AuPaymentUpdateResult[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_ErrorInfo">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ErrorInfo[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_ItemSearchKey">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ItemSearchKey[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_SkuStockInfo">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:SkuStockInfo[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_StockInfo">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:StockInfo[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_TransactionInfoDc">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:TransactionInfoDc[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_TransactionInfoAup">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:TransactionInfoAup[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_TransactionInfoMail">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:TransactionInfoMail[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_TransactionInfoCoupon">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:TransactionInfoCoupon[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_TransactionInfoCoupon2">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:TransactionInfoCoupon2[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_xsd_long">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:long[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_ProcessResult">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ProcessResult[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_CancelInfo">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:CancelInfo[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_PointStatusInfo">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PointStatusInfo[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_SkuStockInfo2">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:SkuStockInfo2[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="updateTransactionStatusRequest">
+
+      <wsdl:part name="req" type="tns1:UpdateTransactionStatusReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoRequest">
+
+      <wsdl:part name="req" type="tns1:GetTransByConditionReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateStockBasicRequest">
+
+      <wsdl:part name="req" type="tns1:UpdateStockBasicReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateStockBasicResponse">
+
+      <wsdl:part name="updateStockBasicReturn" type="tns1:ProcessResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfo2_3Response">
+
+      <wsdl:part name="getTransactionInfo2_3Return" type="tns1:GetTransactionInfoResultMail"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="auPaymentCancelRequest">
+
+      <wsdl:part name="req" type="tns1:AuPaymentCancelReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoByOrderId2_3Response">
+
+      <wsdl:part name="getTransactionInfoByOrderId2_3Return" type="tns1:GetTransactionInfoResultMail"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelTransactionRequest">
+
+      <wsdl:part name="req" type="tns1:CancelTransactionReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfo2_2Response">
+
+      <wsdl:part name="getTransactionInfo2_2Return" type="tns1:GetTransactionInfoResultAup"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="auPaymentFixRequest">
+
+      <wsdl:part name="req" type="tns1:AuPaymentFixReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOrderIdInfoRequest">
+
+      <wsdl:part name="req" type="tns1:GetOrderIdInfoReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateTransactionInfoResponse">
+
+      <wsdl:part name="updateTransactionInfoReturn" type="tns1:ProcessResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoByOrderIdDcResponse">
+
+      <wsdl:part name="getTransactionInfoByOrderIdDcReturn" type="tns1:GetTransactionInfoResultDc"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePointStatusResponse">
+
+      <wsdl:part name="updatePointStatusReturn" type="tns1:ProcessResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoByOrderId2_2Request">
+
+      <wsdl:part name="req" type="tns1:GetTransByIdReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelTransactionResponse">
+
+      <wsdl:part name="cancelTransactionReturn" type="tns1:ProcessResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUpdateResultRequest">
+
+      <wsdl:part name="req" type="tns1:GetUpdateResultReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoResponse">
+
+      <wsdl:part name="getTransactionInfoReturn" type="tns1:GetTransactionInfoResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoDcRequest">
+
+      <wsdl:part name="req" type="tns1:GetTransByConditionReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOrderIdInfoResponse">
+
+      <wsdl:part name="getOrderIdInfoReturn" type="tns1:GetOrderIdInfoResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getStockRequest">
+
+      <wsdl:part name="req" type="tns1:GetStockReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoByOrderId2_2Response">
+
+      <wsdl:part name="getTransactionInfoByOrderId2_2Return" type="tns1:GetTransactionInfoResultAup"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoByOrderId2_3Request">
+
+      <wsdl:part name="req" type="tns1:GetTransByIdReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateTransactionStatusResponse">
+
+      <wsdl:part name="updateTransactionStatusReturn" type="tns1:ProcessResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateStockSku2Request">
+
+      <wsdl:part name="req" type="tns1:UpdateStockSku2Req"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoCoupon2Response">
+
+      <wsdl:part name="getTransactionInfoCoupon2Return" type="tns1:GetTransactionInfoResultCoupon2"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoByOrderIdRequest">
+
+      <wsdl:part name="req" type="tns1:GetTransByIdReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoByOrderIdCoupon2Response">
+
+      <wsdl:part name="getTransactionInfoByOrderIdCoupon2Return" type="tns1:GetTransactionInfoResultCoupon2"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateStockSkuRequest">
+
+      <wsdl:part name="req" type="tns1:UpdateStockSkuReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoCouponRequest">
+
+      <wsdl:part name="req" type="tns1:GetTransByConditionReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoByOrderIdCoupon2Request">
+
+      <wsdl:part name="req" type="tns1:GetTransByIdReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateStockBasic2Response">
+
+      <wsdl:part name="updateStockBasic2Return" type="tns1:ProcessResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="auPaymentFixResponse">
+
+      <wsdl:part name="auPaymentFixReturn" type="tns1:ProcessResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoCoupon2Request">
+
+      <wsdl:part name="req" type="tns1:GetTransByConditionReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateStockSku2Response">
+
+      <wsdl:part name="updateStockSku2Return" type="tns1:ProcessResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoByOrderIdResponse">
+
+      <wsdl:part name="getTransactionInfoByOrderIdReturn" type="tns1:GetTransactionInfoResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoCouponResponse">
+
+      <wsdl:part name="getTransactionInfoCouponReturn" type="tns1:GetTransactionInfoResultCoupon"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateStockSkuResponse">
+
+      <wsdl:part name="updateStockSkuReturn" type="tns1:ProcessResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="auPaymentCancelResponse">
+
+      <wsdl:part name="auPaymentCancelReturn" type="tns1:ProcessResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoByOrderIdCouponResponse">
+
+      <wsdl:part name="getTransactionInfoByOrderIdCouponReturn" type="tns1:GetTransactionInfoResultCoupon"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getStockResponse">
+
+      <wsdl:part name="getStockReturn" type="tns1:GetStockResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateStockBasic2Request">
+
+      <wsdl:part name="req" type="tns1:UpdateStockBasic2Req"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoDcResponse">
+
+      <wsdl:part name="getTransactionInfoDcReturn" type="tns1:GetTransactionInfoResultDc"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoByOrderIdCouponRequest">
+
+      <wsdl:part name="req" type="tns1:GetTransByIdReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateTransactionInfoRequest">
+
+      <wsdl:part name="req" type="tns1:UpdateTransactionReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePointStatusRequest">
+
+      <wsdl:part name="req" type="tns1:UpdatePointStatusReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUpdateResultResponse">
+
+      <wsdl:part name="getUpdateResultReturn" type="tns1:UpdateResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfoByOrderIdDcRequest">
+
+      <wsdl:part name="req" type="tns1:GetTransByIdReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfo2_2Request">
+
+      <wsdl:part name="req" type="tns1:GetTransByConditionReq"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTransactionInfo2_3Request">
+
+      <wsdl:part name="req" type="tns1:GetTransByConditionReq"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ApiServicesImpl">
+
+      <wsdl:operation name="getOrderIdInfo" parameterOrder="req">
+
+         <wsdl:input message="impl:getOrderIdInfoRequest" name="getOrderIdInfoRequest"/>
+
+         <wsdl:output message="impl:getOrderIdInfoResponse" name="getOrderIdInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateTransactionInfo" parameterOrder="req">
+
+         <wsdl:input message="impl:updateTransactionInfoRequest" name="updateTransactionInfoRequest"/>
+
+         <wsdl:output message="impl:updateTransactionInfoResponse" name="updateTransactionInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getStock" parameterOrder="req">
+
+         <wsdl:input message="impl:getStockRequest" name="getStockRequest"/>
+
+         <wsdl:output message="impl:getStockResponse" name="getStockResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfo" parameterOrder="req">
+
+         <wsdl:input message="impl:getTransactionInfoRequest" name="getTransactionInfoRequest"/>
+
+         <wsdl:output message="impl:getTransactionInfoResponse" name="getTransactionInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoDc" parameterOrder="req">
+
+         <wsdl:input message="impl:getTransactionInfoDcRequest" name="getTransactionInfoDcRequest"/>
+
+         <wsdl:output message="impl:getTransactionInfoDcResponse" name="getTransactionInfoDcResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfo2_2" parameterOrder="req">
+
+         <wsdl:input message="impl:getTransactionInfo2_2Request" name="getTransactionInfo2_2Request"/>
+
+         <wsdl:output message="impl:getTransactionInfo2_2Response" name="getTransactionInfo2_2Response"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfo2_3" parameterOrder="req">
+
+         <wsdl:input message="impl:getTransactionInfo2_3Request" name="getTransactionInfo2_3Request"/>
+
+         <wsdl:output message="impl:getTransactionInfo2_3Response" name="getTransactionInfo2_3Response"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoCoupon" parameterOrder="req">
+
+         <wsdl:input message="impl:getTransactionInfoCouponRequest" name="getTransactionInfoCouponRequest"/>
+
+         <wsdl:output message="impl:getTransactionInfoCouponResponse" name="getTransactionInfoCouponResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoCoupon2" parameterOrder="req">
+
+         <wsdl:input message="impl:getTransactionInfoCoupon2Request" name="getTransactionInfoCoupon2Request"/>
+
+         <wsdl:output message="impl:getTransactionInfoCoupon2Response" name="getTransactionInfoCoupon2Response"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoByOrderId" parameterOrder="req">
+
+         <wsdl:input message="impl:getTransactionInfoByOrderIdRequest" name="getTransactionInfoByOrderIdRequest"/>
+
+         <wsdl:output message="impl:getTransactionInfoByOrderIdResponse" name="getTransactionInfoByOrderIdResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoByOrderIdDc" parameterOrder="req">
+
+         <wsdl:input message="impl:getTransactionInfoByOrderIdDcRequest" name="getTransactionInfoByOrderIdDcRequest"/>
+
+         <wsdl:output message="impl:getTransactionInfoByOrderIdDcResponse" name="getTransactionInfoByOrderIdDcResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoByOrderId2_2" parameterOrder="req">
+
+         <wsdl:input message="impl:getTransactionInfoByOrderId2_2Request" name="getTransactionInfoByOrderId2_2Request"/>
+
+         <wsdl:output message="impl:getTransactionInfoByOrderId2_2Response" name="getTransactionInfoByOrderId2_2Response"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoByOrderId2_3" parameterOrder="req">
+
+         <wsdl:input message="impl:getTransactionInfoByOrderId2_3Request" name="getTransactionInfoByOrderId2_3Request"/>
+
+         <wsdl:output message="impl:getTransactionInfoByOrderId2_3Response" name="getTransactionInfoByOrderId2_3Response"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoByOrderIdCoupon" parameterOrder="req">
+
+         <wsdl:input message="impl:getTransactionInfoByOrderIdCouponRequest" name="getTransactionInfoByOrderIdCouponRequest"/>
+
+         <wsdl:output message="impl:getTransactionInfoByOrderIdCouponResponse" name="getTransactionInfoByOrderIdCouponResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoByOrderIdCoupon2" parameterOrder="req">
+
+         <wsdl:input message="impl:getTransactionInfoByOrderIdCoupon2Request" name="getTransactionInfoByOrderIdCoupon2Request"/>
+
+         <wsdl:output message="impl:getTransactionInfoByOrderIdCoupon2Response" name="getTransactionInfoByOrderIdCoupon2Response"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUpdateResult" parameterOrder="req">
+
+         <wsdl:input message="impl:getUpdateResultRequest" name="getUpdateResultRequest"/>
+
+         <wsdl:output message="impl:getUpdateResultResponse" name="getUpdateResultResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelTransaction" parameterOrder="req">
+
+         <wsdl:input message="impl:cancelTransactionRequest" name="cancelTransactionRequest"/>
+
+         <wsdl:output message="impl:cancelTransactionResponse" name="cancelTransactionResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePointStatus" parameterOrder="req">
+
+         <wsdl:input message="impl:updatePointStatusRequest" name="updatePointStatusRequest"/>
+
+         <wsdl:output message="impl:updatePointStatusResponse" name="updatePointStatusResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateTransactionStatus" parameterOrder="req">
+
+         <wsdl:input message="impl:updateTransactionStatusRequest" name="updateTransactionStatusRequest"/>
+
+         <wsdl:output message="impl:updateTransactionStatusResponse" name="updateTransactionStatusResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateStockBasic" parameterOrder="req">
+
+         <wsdl:input message="impl:updateStockBasicRequest" name="updateStockBasicRequest"/>
+
+         <wsdl:output message="impl:updateStockBasicResponse" name="updateStockBasicResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateStockSku" parameterOrder="req">
+
+         <wsdl:input message="impl:updateStockSkuRequest" name="updateStockSkuRequest"/>
+
+         <wsdl:output message="impl:updateStockSkuResponse" name="updateStockSkuResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateStockBasic2" parameterOrder="req">
+
+         <wsdl:input message="impl:updateStockBasic2Request" name="updateStockBasic2Request"/>
+
+         <wsdl:output message="impl:updateStockBasic2Response" name="updateStockBasic2Response"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateStockSku2" parameterOrder="req">
+
+         <wsdl:input message="impl:updateStockSku2Request" name="updateStockSku2Request"/>
+
+         <wsdl:output message="impl:updateStockSku2Response" name="updateStockSku2Response"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="auPaymentFix" parameterOrder="req">
+
+         <wsdl:input message="impl:auPaymentFixRequest" name="auPaymentFixRequest"/>
+
+         <wsdl:output message="impl:auPaymentFixResponse" name="auPaymentFixResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="auPaymentCancel" parameterOrder="req">
+
+         <wsdl:input message="impl:auPaymentCancelRequest" name="auPaymentCancelRequest"/>
+
+         <wsdl:output message="impl:auPaymentCancelResponse" name="auPaymentCancelResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BiddersTransactionInfoServiceSoapBinding" type="impl:ApiServicesImpl">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getOrderIdInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getOrderIdInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getOrderIdInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateTransactionInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateTransactionInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateTransactionInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getStock">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getStockRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getStockResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTransactionInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTransactionInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoDc">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTransactionInfoDcRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTransactionInfoDcResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfo2_2">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTransactionInfo2_2Request">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTransactionInfo2_2Response">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfo2_3">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTransactionInfo2_3Request">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTransactionInfo2_3Response">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoCoupon">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTransactionInfoCouponRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTransactionInfoCouponResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoCoupon2">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTransactionInfoCoupon2Request">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTransactionInfoCoupon2Response">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoByOrderId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTransactionInfoByOrderIdRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTransactionInfoByOrderIdResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoByOrderIdDc">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTransactionInfoByOrderIdDcRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTransactionInfoByOrderIdDcResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoByOrderId2_2">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTransactionInfoByOrderId2_2Request">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTransactionInfoByOrderId2_2Response">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoByOrderId2_3">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTransactionInfoByOrderId2_3Request">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTransactionInfoByOrderId2_3Response">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoByOrderIdCoupon">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTransactionInfoByOrderIdCouponRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTransactionInfoByOrderIdCouponResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTransactionInfoByOrderIdCoupon2">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTransactionInfoByOrderIdCoupon2Request">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTransactionInfoByOrderIdCoupon2Response">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUpdateResult">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUpdateResultRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUpdateResultResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelTransaction">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelTransactionRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelTransactionResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePointStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updatePointStatusRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updatePointStatusResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateTransactionStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateTransactionStatusRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateTransactionStatusResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateStockBasic">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateStockBasicRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateStockBasicResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateStockSku">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateStockSkuRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateStockSkuResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateStockBasic2">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateStockBasic2Request">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateStockBasic2Response">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateStockSku2">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateStockSku2Request">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateStockSku2Response">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="auPaymentFix">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="auPaymentFixRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="auPaymentFixResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="auPaymentCancel">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="auPaymentCancelRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://soap.dena.jp" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="auPaymentCancelResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ApiServicesImplService">
+
+      <wsdl:port binding="impl:BiddersTransactionInfoServiceSoapBinding" name="BiddersTransactionInfoService">
+
+         <wsdlsoap:address location="https://wsapi2.dena.ne.jp/api/services/BiddersTransactionInfoService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
